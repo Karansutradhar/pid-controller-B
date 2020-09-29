@@ -21,7 +21,7 @@ None
 ## Notes
 These notes are based on the design review discussion:
 1. Implementation and build passes successfully.
-2. Need to modify current test cases to increase coverage.
+2. Need to modify current test cases to increase coverage. Modified tests to increase coverage.
 3. The initial implementation did not have the previous error & integral error attributes. Corrected that and intialized value to zero.
 
 
