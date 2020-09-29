@@ -42,7 +42,7 @@ namespace
   class checkPIDClass : public ::testing::Test
   {
   protected: // default variables
-    tdd::pidController *pidCon;
+    pidController *pidCon;
     double kp = 0.0;
     double ki = 0.0;
     double kd = 0.0;
@@ -214,7 +214,7 @@ namespace
   */
   
   TEST(pidControllerTest, classInitialisationTest){
-    tdd::pidController pidCon(0.1, 0.1, 0.1, 0.1);
+    pidController pidCon(0.1, 0.1, 0.1, 0.1);
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKdGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKiGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKpGain());
@@ -228,7 +228,7 @@ namespace
   */
   
 TEST(pidControllerTest, classInitialisationTest2){
-  tdd::pidController pidCon = pidController();
+  pidController pidCon = pidController();
   pidCon.setKpGain(0.1);
   pidCon.setKdGain(0.1);
   pidCon.setKiGain(0.1);
