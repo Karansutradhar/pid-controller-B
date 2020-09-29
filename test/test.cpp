@@ -201,8 +201,8 @@ namespace
    * @return None
   */
   
-  TEST(pidControllerTest, classInitialisationTest){
-  pidController pidCon();
+TEST(pidControllerTest, classInitialisationTest2){
+  pidController pidCon = pidController();
   pidCon.setKpGain(0.1);
   pidCon.setKdGain(0.1);
   pidCon.setKiGain(0.1);
