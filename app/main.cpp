@@ -46,7 +46,7 @@ int main()
     double setPoint = 5;
     double feedback = 0;
     double tolerance = 0.1;
-    pidController pid(kp, ki, kd, dt); // Initializing the constructor with the input values of kp, ki, kd, dt
+    tdd::pidController pid(kp, ki, kd, dt); // Initializing the constructor with the input values of kp, ki, kd, dt
     std::cout << "PID GAINS For the simulation" << std::endl;
     std::cout << "kp: " << kp << ", ki: " << ki << ", kd: " << kd << ", dt: " << dt << std::endl;
     std::cout << "Error Tolerance: " << tolerance << std::endl;
