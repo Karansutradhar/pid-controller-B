@@ -2,9 +2,15 @@
 * @file PIDController.cpp
 * @author
 *
-* Karan Sutradhar (117037272)
-* Vishnuu Appaya Dhanabalan (116873314)
+* Part 1
+* Karan Sutradhar (117037272) - Driver
+* Vishnuu Appaya Dhanabalan (116873314) - Navigator
+* 
+* Part 2
+* Sukoon Sarin (sukoonsarin) - Navigator
+* Nalin Das (nalindas9) -  Driver
 *
+* @date 9/27/2020
 * @version 1.0
 *
 * @section LICENSE
@@ -29,7 +35,7 @@
  * @return none
  */
 
-pidController::pidController(){
+tdd::pidController::pidController(){
     kp = 0;
     ki = 0;
     kd = 0;
@@ -48,7 +54,7 @@ pidController::pidController(){
  * @return none
  */ 
 
-pidController::pidController(double kpValue, double kiValue, double kdValue, double dtValue) {
+tdd::pidController::pidController(double kpValue, double kiValue, double kdValue, double dtValue) {
     kp = kpValue;
     ki = kiValue;
     kd = kdValue;
@@ -63,7 +69,7 @@ pidController::pidController(double kpValue, double kiValue, double kdValue, dou
  * @return none
  */
 
-pidController::~pidController(){}
+tdd::pidController::~pidController(){}
 
 /**
  * @brief it is a setter method to set the Kp variable to a new value
@@ -71,7 +77,7 @@ pidController::~pidController(){}
  * @return none
  */
 
-void pidController::setKpGain(double k){kp = k;}
+void tdd::pidController::setKpGain(double k){kp = k;}
 
 /**
  * @brief it is a setter method to set the Ki variable to a new value
@@ -79,7 +85,7 @@ void pidController::setKpGain(double k){kp = k;}
  * @return none
  */
 
-void pidController::setKiGain(double k){ki = k;}
+void tdd::pidController::setKiGain(double k){ki = k;}
 
 /**
  * @brief it is a setter method to set the Kd variable to a new value
@@ -87,7 +93,7 @@ void pidController::setKiGain(double k){ki = k;}
  * @return none
  */
 
-void pidController::setKdGain(double k){kd = k;}
+void tdd::pidController::setKdGain(double k){kd = k;}
 
 /**
  * @brief it is a setter method to set the Dt variable to a new value
@@ -95,7 +101,7 @@ void pidController::setKdGain(double k){kd = k;}
  * @return none
  */
 
-void pidController::setDtVal(double dT){(dT > 0) ? dt = dT: 1;}
+void tdd::pidController::setDtVal(double dT){(dT > 0) ? dt = dT: 1;}
 
 /**
  * @brief it is a getter method to get the Dt member variable
@@ -103,7 +109,7 @@ void pidController::setDtVal(double dT){(dT > 0) ? dt = dT: 1;}
  * @return 0.0
  */
 
-double pidController::getDtVal(){return dt;}
+double tdd::pidController::getDtVal(){return dt;}
 
 /**
  * @brief it is a getter method to get the Kp member variable
@@ -111,7 +117,7 @@ double pidController::getDtVal(){return dt;}
  * @return 0.0
  */
 
-double pidController::getKpGain(){return kp;}
+double tdd::pidController::getKpGain(){return kp;}
 
 /**
  * @brief it is a getter method to get the Ki member variable
@@ -119,7 +125,7 @@ double pidController::getKpGain(){return kp;}
  * @return 0.0
  */
 
-double pidController::getKiGain(){return ki;}
+double tdd::pidController::getKiGain(){return ki;}
 
 /**
  * @brief it is a getter method to set the Kd member variable
@@ -127,7 +133,7 @@ double pidController::getKiGain(){return ki;}
  * @return 0.0
  */
 
-double pidController::getKdGain(){return kd;}
+double tdd::pidController::getKdGain(){return kd;}
 
 /**
  * @brief it is a getter method to get the IntergralError variable
@@ -135,7 +141,7 @@ double pidController::getKdGain(){return kd;}
  * @return 0.0
  */
 
-double pidController::getIntegralError(){return intgrError;}
+double tdd::pidController::getIntegralError(){return intgrError;}
 
 /**
  * @brief it is a reset method to reset the Integral Errror
@@ -143,7 +149,7 @@ double pidController::getIntegralError(){return intgrError;}
  * @return none
  */
 
-void pidController::resetIntegralError(){intgrError = 0;}
+void tdd::pidController::resetIntegralError(){intgrError = 0;}
 
 /**
  * @brief it is a method to compute the output velocity
@@ -152,7 +158,7 @@ void pidController::resetIntegralError(){intgrError = 0;}
  * @return control output
  */
 
-double pidController::calculateVelocity(double requiredVelocity, double actualVelocity) {
+double tdd::pidController::calculateVelocity(double requiredVelocity, double actualVelocity) {
     double error = requiredVelocity - actualVelocity;
     intgrError += error*dt;
     double controlOutput = (kp*error) + (ki*intgrError) + (kd/dt)*(error-prevError);
