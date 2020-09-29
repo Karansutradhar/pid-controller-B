@@ -2,9 +2,15 @@
 * @file main.cpp
 * @authors
 *
-* Karan Sutradhar (117037272)
-* Vishnuu Appaya Dhanabalan (116873314)
+* Part 1
+* Karan Sutradhar (117037272) - Driver
+* Vishnuu Appaya Dhanabalan (116873314) - Navigator
+* 
+* Part 2
+* Sukoon Sarin (sukoonsarin) - Navigator
+* Nalin Das (nalindas9) -  Driver
 *
+* @date 9/27/2020
 * @version 1.0
 *
 * @section LICENSE
