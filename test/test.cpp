@@ -42,7 +42,7 @@ namespace
   class checkPIDClass : public ::testing::Test
   {
   protected: // default variables
-    pidController *pidCon;
+    tdd::pidController *pidCon;
     double kp = 0.0;
     double ki = 0.0;
     double kd = 0.0;
@@ -54,7 +54,7 @@ namespace
 
     virtual void SetUp() // required method that is called at the start of every TEST_F
     {
-      pidCon = new pidController(kp, ki, kd, dt); // Use of non empty constructor
+      pidCon = new tdd::pidController(kp, ki, kd, dt); // Use of non empty constructor
     }
     virtual void TearDown() // required method that is called at the end of every TEST_F
     {
@@ -214,7 +214,7 @@ namespace
   */
   
   TEST(pidControllerTest, classInitialisationTest){
-    pidController pidCon(0.1, 0.1, 0.1, 0.1);
+    tdd::pidController pidCon(0.1, 0.1, 0.1, 0.1);
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKdGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKiGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKpGain());
@@ -228,7 +228,7 @@ namespace
   */
   
 TEST(pidControllerTest, classInitialisationTest2){
-  pidController pidCon = pidController();
+  tdd::pidController pidCon = tdd::pidController();
   pidCon.setKpGain(0.1);
   pidCon.setKdGain(0.1);
   pidCon.setKiGain(0.1);
