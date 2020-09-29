@@ -1,31 +1,31 @@
-/**
-* @file PIDController.cpp
-* @author
-*
-* Part 1
-* Karan Sutradhar (117037272) - Driver
-* Vishnuu Appaya Dhanabalan (116873314) - Navigator
-* 
-* Part 2
-* Sukoon Sarin (sukoonsarin) - Navigator
-* Nalin Das (nalindas9) -  Driver
-*
-* @date 9/27/2020
-* @version 1.0
-*
-* @section LICENSE
-*
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public License as
-* published by the Free Software Foundation; either version 2 of
-* the License, or (at your option) any later version.
-*
-* @section DESCRIPTION
-*
-*  This is cpp file for PIDController.cpp this file implements
-*  the code to compute the velocity with minimum error and works
-*  on feedback loop to maintain velocity to required velocity
-*/
+/** Copyright 2020 Karan Sutradhar , Vishnuu A D
+ * @file PIDController.cpp
+ * @author
+ *
+ * Part 1
+ * Karan Sutradhar (117037272) - Driver
+ * Vishnuu Appaya Dhanabalan (116873314) - Navigator
+ *
+ * Part 2
+ * Sukoon Sarin (sukoonsarin) - Navigator
+ * Nalin Das (nalindas9) -  Driver
+ *
+ * @date 9/27/2020
+ * @version 1.0
+ *
+ * @section LICENSE
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as
+ * published by the Free Software Foundation; either version 2 of
+ * the License, or (at your option) any later version.
+ *
+ * @section DESCRIPTION
+ *
+ *  This is cpp file for PIDController.cpp this file implements
+ *  the code to compute the velocity with minimum error and works
+ *  on feedback loop to maintain velocity to required velocity
+ */
 
 #include "../include/PIDController.h"
 
@@ -35,16 +35,18 @@
  * @return none
  */
 
-tdd::pidController::pidController(){
-    kp = 0;
-    ki = 0;
-    kd = 0;
-    dt = 0.1;
-    intgrError = 0;
-    prevError = 0;}
+tdd::pidController::pidController() {
+  kp = 0;
+  ki = 0;
+  kd = 0;
+  dt = 0.1;
+  intgrError = 0;
+  prevError = 0;
+}
 
 /**
- * @brief parameterized constructorof class pidController to initialize the private members
+ * @brief parameterized constructorof class pidController to initialize the
+ * private members
  * @param kpValue variable for initializing the member kp
  * @param kiValue variable for initializing the member ki
  * @param kdValue variable for initializing the member kd
@@ -52,24 +54,26 @@ tdd::pidController::pidController(){
  * @param previousError variable for initializing the member previousError
  * @param controlOutput variable for initializing the member controlOutput
  * @return none
- */ 
+ */
 
-tdd::pidController::pidController(double kpValue, double kiValue, double kdValue, double dtValue) {
-    kp = kpValue;
-    ki = kiValue;
-    kd = kdValue;
-    dt = dtValue;
-    intgrError = 0;
-    prevError = 0;
+tdd::pidController::pidController(double kpValue, double kiValue,
+                                  double kdValue, double dtValue) {
+  kp = kpValue;
+  ki = kiValue;
+  kd = kdValue;
+  dt = dtValue;
+  intgrError = 0;
+  prevError = 0;
 }
 
 /**
- * @brief default destructor which destroys the object of the class pidController
+ * @brief default destructor which destroys the object of the class
+ * pidController
  * @param none
  * @return none
  */
 
-tdd::pidController::~pidController(){}
+tdd::pidController::~pidController() {}
 
 /**
  * @brief it is a setter method to set the Kp variable to a new value
@@ -77,7 +81,7 @@ tdd::pidController::~pidController(){}
  * @return none
  */
 
-void tdd::pidController::setKpGain(double k){kp = k;}
+void tdd::pidController::setKpGain(double k) { kp = k; }
 
 /**
  * @brief it is a setter method to set the Ki variable to a new value
@@ -85,7 +89,7 @@ void tdd::pidController::setKpGain(double k){kp = k;}
  * @return none
  */
 
-void tdd::pidController::setKiGain(double k){ki = k;}
+void tdd::pidController::setKiGain(double k) { ki = k; }
 
 /**
  * @brief it is a setter method to set the Kd variable to a new value
@@ -93,7 +97,7 @@ void tdd::pidController::setKiGain(double k){ki = k;}
  * @return none
  */
 
-void tdd::pidController::setKdGain(double k){kd = k;}
+void tdd::pidController::setKdGain(double k) { kd = k; }
 
 /**
  * @brief it is a setter method to set the Dt variable to a new value
@@ -101,7 +105,7 @@ void tdd::pidController::setKdGain(double k){kd = k;}
  * @return none
  */
 
-void tdd::pidController::setDtVal(double dT){(dT > 0) ? dt = dT: 1;}
+void tdd::pidController::setDtVal(double dT) { (dT > 0) ? dt = dT : 1; }
 
 /**
  * @brief it is a getter method to get the Dt member variable
@@ -109,7 +113,7 @@ void tdd::pidController::setDtVal(double dT){(dT > 0) ? dt = dT: 1;}
  * @return 0.0
  */
 
-double tdd::pidController::getDtVal(){return dt;}
+double tdd::pidController::getDtVal() { return dt; }
 
 /**
  * @brief it is a getter method to get the Kp member variable
@@ -117,7 +121,7 @@ double tdd::pidController::getDtVal(){return dt;}
  * @return 0.0
  */
 
-double tdd::pidController::getKpGain(){return kp;}
+double tdd::pidController::getKpGain() { return kp; }
 
 /**
  * @brief it is a getter method to get the Ki member variable
@@ -125,7 +129,7 @@ double tdd::pidController::getKpGain(){return kp;}
  * @return 0.0
  */
 
-double tdd::pidController::getKiGain(){return ki;}
+double tdd::pidController::getKiGain() { return ki; }
 
 /**
  * @brief it is a getter method to set the Kd member variable
@@ -133,7 +137,7 @@ double tdd::pidController::getKiGain(){return ki;}
  * @return 0.0
  */
 
-double tdd::pidController::getKdGain(){return kd;}
+double tdd::pidController::getKdGain() { return kd; }
 
 /**
  * @brief it is a getter method to get the IntergralError variable
@@ -141,7 +145,7 @@ double tdd::pidController::getKdGain(){return kd;}
  * @return 0.0
  */
 
-double tdd::pidController::getIntegralError(){return intgrError;}
+double tdd::pidController::getIntegralError() { return intgrError; }
 
 /**
  * @brief it is a reset method to reset the Integral Errror
@@ -149,7 +153,7 @@ double tdd::pidController::getIntegralError(){return intgrError;}
  * @return none
  */
 
-void tdd::pidController::resetIntegralError(){intgrError = 0;}
+void tdd::pidController::resetIntegralError() { intgrError = 0; }
 
 /**
  * @brief it is a method to compute the output velocity
@@ -158,10 +162,12 @@ void tdd::pidController::resetIntegralError(){intgrError = 0;}
  * @return control output
  */
 
-double tdd::pidController::calculateVelocity(double requiredVelocity, double actualVelocity) {
-    double error = requiredVelocity - actualVelocity;
-    intgrError += error*dt;
-    double controlOutput = (kp*error) + (ki*intgrError) + (kd/dt)*(error-prevError);
-    prevError = error;
-    return controlOutput;
+double tdd::pidController::calculateVelocity(double requiredVelocity,
+                                             double actualVelocity) {
+  double error = requiredVelocity - actualVelocity;
+  intgrError += error * dt;
+  double controlOutput =
+      (kp * error) + (ki * intgrError) + (kd / dt) * (error - prevError);
+  prevError = error;
+  return controlOutput;
 }
