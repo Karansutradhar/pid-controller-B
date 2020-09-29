@@ -181,12 +181,36 @@ namespace
     ASSERT_DOUBLE_EQ(dt1, pidCon->getDtVal());
   }
 
+  /**
+   * @brief class initialisation for non empty constructor
+   * @param None
+   * @return None
+  */
+  
   TEST(pidControllerTest, classInitialisationTest){
     pidController pidCon(0.1, 0.1, 0.1, 0.1);
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKdGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKiGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKpGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getDtVal());
+  }
+
+  /**
+   * @brief class initialisation for empty constructor
+   * @param None
+   * @return None
+  */
+  
+  TEST(pidControllerTest, classInitialisationTest){
+  pidController pidCon();
+  pidCon.setKpGain(0.1);
+  pidCon.setKdGain(0.1);
+  pidCon.setKiGain(0.1);
+  pidCon.setDtVal(0.1);
+  ASSERT_DOUBLE_EQ(0.1, pidCon.getKdGain());
+  ASSERT_DOUBLE_EQ(0.1, pidCon.getKiGain());
+  ASSERT_DOUBLE_EQ(0.1, pidCon.getKpGain());
+  ASSERT_DOUBLE_EQ(0.1, pidCon.getDtVal());
   }
 
 } // namespace
