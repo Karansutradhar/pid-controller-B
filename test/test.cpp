@@ -1,7 +1,33 @@
 /** @file test.cpp
- * @brief Test file that consists of all TEST CASES to test the implemented PID Class.
- * @brief Makes use of Google mock's Setup and TearDown features for testing classes.
- */
+* @authors
+*
+* Part 1
+* Karan Sutradhar (117037272) - Driver
+* Vishnuu Appaya Dhanabalan (116873314) - Navigator
+*
+* Part 2
+* Sukoon Sarin (sukoonsarin) - Navigator
+* Nalin Das (nalindas9) -  Driver
+*
+* @date 9/27/2020
+*
+* @version 1.0
+*
+* @section LICENSE
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License as
+* published by the Free Software Foundation; either version 2 of
+* the License, or (at your option) any later version.
+*
+* @section DESCRIPTION
+*
+*
+* @brief Test file that consists of all TEST CASES to test the implemented PID Class.
+* @brief Makes use of Google mock's Setup and TearDown features for testing classes.
+*
+*/
+
 #include <gtest/gtest.h>
 #include "../include/PIDController.h"
 #include <limits>
@@ -16,7 +42,7 @@ namespace
   class checkPIDClass : public ::testing::Test
   {
   protected: // default variables
-    pidController *pidCon;
+    tdd::pidController *pidCon;
     double kp = 0.0;
     double ki = 0.0;
     double kd = 0.0;
@@ -188,7 +214,7 @@ namespace
   */
   
   TEST(pidControllerTest, classInitialisationTest){
-    pidController pidCon(0.1, 0.1, 0.1, 0.1);
+    tdd::pidController pidCon(0.1, 0.1, 0.1, 0.1);
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKdGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKiGain());
     ASSERT_DOUBLE_EQ(0.1, pidCon.getKpGain());
@@ -202,7 +228,7 @@ namespace
   */
   
 TEST(pidControllerTest, classInitialisationTest2){
-  pidController pidCon = pidController();
+  tdd::pidController pidCon = pidController();
   pidCon.setKpGain(0.1);
   pidCon.setKdGain(0.1);
   pidCon.setKiGain(0.1);
