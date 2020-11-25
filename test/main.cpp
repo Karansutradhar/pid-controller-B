@@ -1,4 +1,4 @@
-/** Copyright 2020 Karan Sutradhar , Vishnuu A D
+/** Copyright 2020 Karan Sutradhar
  * @file main.cpp
  * @authors
  *
