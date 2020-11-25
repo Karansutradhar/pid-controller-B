@@ -49,6 +49,7 @@ int main() {
   gpid->setKiGain(2.0);
   // Compute the value of the PIDController gains values.
   double calulateValues = pid.calculate(requiredVelocity, actualVelocity);
-  std::cout << "The output velocity values from the PID Controller Calculate function is" << calulateValues<< std::endl;
+  std::cout << "The output velocity values from the PID Controller Calculate function is"
+    << calulateValues<< std::endl;
   return 0;
 }

@@ -2,7 +2,6 @@
  * @file test.cpp
  * @authors
  *
- * Part 1
  * Karan Sutradhar (117037272)
  *
  * @date 11/22/2020
