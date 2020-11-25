@@ -1,16 +1,9 @@
-/** Copyright 2020 Karan Sutradhar , Vishnuu A D
+/** Copyright 2020 Karan Sutradhar
  * @file main.cpp
  * @authors
+ * Karan Sutradhar (117037272)
  *
- * Part 1
- * Karan Sutradhar (117037272) - Driver
- * Vishnuu Appaya Dhanabalan (116873314) - Navigator
- *
- * Part 2
- * Sukoon Sarin (sukoonsarin) - Navigator
- * Nalin Das (nalindas9) -  Driver
- *
- * @date 9/27/2020
+ * @date 11/22/2020
  * @version 1.0
  *
  * @section LICENSE
@@ -29,36 +22,33 @@
 
 #include <cmath>
 #include <iostream>
-
-#include "../include/PIDController.h"
+#include <memory>
+#include "gmockPID.hpp"
+#include "PIDController.hpp"
 
 /**
  * @brief It is the main function to demonstrate working of implemented
  * controller.
  * @param none
- * @returns 0
+ * @returns Run status (int)
  */
 
 int main() {
-  double kp = 0.02;
-  double ki = 0.002;
-  double kd = 0.002;
-  double dt = 0.2;
-  double setPoint = 5;
-  double feedback = 0;
-  double tolerance = 0.1;
-  tdd::pidController pid(kp, ki, kd, dt);  // Initializing the constructor with
-                                           // the input values of kp, ki, kd, dt
-  std::cout << "PID GAINS For the simulation" << std::endl;
-  std::cout << "kp: " << kp << ", ki: " << ki << ", kd: " << kd
-            << ", dt: " << dt << std::endl;
-  std::cout << "Error Tolerance: " << tolerance << std::endl;
-  std::cout << "SetPoint Velocity: " << setPoint
-            << ", Initial Velocity: " << feedback << std::endl;
-
-  while (abs(setPoint - feedback) > abs(tolerance)) {
-    feedback = pid.calculateVelocity(setPoint, feedback);
-    std::cout << "Feedback: " << feedback << std::endl;
-  }
-  std::cout << std::endl << "Controller Converged!" << std::endl;
+  pidController pid;  // Initializing the object
+  // A pointer initlized to the virtual class and an object is created
+  std::unique_ptr<gmockPID> gpid = std::make_unique<pidController>();
+  double requiredVelocity, actualVelocity;
+  // Get the values for the calculate function.
+  std::cout << "Enter the value of the required Velocity : ";
+  std::cin >> requiredVelocity;
+  std::cout << "Enter the value of the actual Velocity : ";
+  std::cin >> actualVelocity;
+  // Setting the PID gains values
+  gpid->setKpGain(2.0);
+  gpid->setKdGain(1.0);
+  gpid->setKiGain(2.0);
+  // Compute the value of the PIDController gains values.
+  double calulateValues = pid.calculate(requiredVelocity, actualVelocity);
+  std::cout << "The output velocity values from the PID Controller Calculate function is" << calulateValues<< std::endl;
+  return 0;
 }
